@@ -1,0 +1,35 @@
+.gi-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gi-wrapper--photo {
+  width: 104%;
+  margin-left: -2%;
+  margin-right: -2%;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+.gi-wrapper--photo:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  clear: both;
+  line-height: 0;
+  visibility: hidden;
+}
+.gi-wrapper--photo li {
+  float: left;
+  width: 33.3333%;
+  margin: 0;
+  padding-left: 2%;
+  padding-right: 2%;
+  box-sizing: border-box;
+  font-size: 0.6rem;
+  text-align: left;
+}
+.gi-wrapper--photo li img {
+  max-width: 100%;
+  height: auto;
+}

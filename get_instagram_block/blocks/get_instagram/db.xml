@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="btGetInstagram">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+		</field>
+		<field name="instagramID" type="X2">
+		</field>
+		<field name="token" type="X2">
+		</field>
+		<field name="num" type="I">
+		</field>
+	</table>
+</schema>
