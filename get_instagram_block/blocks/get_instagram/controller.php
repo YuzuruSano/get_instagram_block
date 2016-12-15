@@ -40,13 +40,8 @@ class Controller extends BlockController
         /* ===============================================
         instagram APIからデータ取得
         =============================================== */
-        // ユーザネームから固有のuser_IDを取得する。
-        define("INSTAGRAM_ACCESS_TOKEN", $this->token);
-        // ユーザアカウント名
-        $user_account = $this->instagramID;
-
         // ユーザアカウント名からユーザデータを取得する。
-        $user_api_url = 'https://api.instagram.com/v1/users/search?q=' . $user_account . '&access_token=' . INSTAGRAM_ACCESS_TOKEN;
+        $user_api_url = 'https://api.instagram.com/v1/users/search?q=' . $this->instagramID . '&access_token=' . $this->token;
         $user_data = json_decode(@file_get_contents($user_api_url));
 
         // 取得したデータの中から正しいデータを選出
@@ -58,7 +53,7 @@ class Controller extends BlockController
 
         // 特定ユーザの投稿データを取得する
         // API制限で最新20件まで
-        $photos_api_url = 'https://api.instagram.com/v1/users/'.$user_id.'/media/recent?access_token=' . INSTAGRAM_ACCESS_TOKEN;
+        $photos_api_url = 'https://api.instagram.com/v1/users/'.$user_id.'/media/recent?access_token=' . $this->token;
 
         $photos_data = json_decode(@file_get_contents($photos_api_url));
 
@@ -87,10 +82,10 @@ class Controller extends BlockController
     {
         $e = Core::make("helper/validation/error");
         if (in_array("instagramID", $this->btFieldsRequired) && trim($args["instagramID"]) == "") {
-            $e->add(t("The %s field is required.", t("instagram ID")));
+            $e->add(t("The %s field is required.", "instagram ID"));
         }
         if (in_array("token", $this->btFieldsRequired) && trim($args["token"]) == "") {
-            $e->add(t("The %s field is required.", t("アクセストークン")));
+            $e->add(t("The %s field is required.", "アクセストークン"));
         }
 
         if(!intval($args['num'])) {
